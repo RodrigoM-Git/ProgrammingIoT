@@ -10,7 +10,8 @@ Task b
 We created a temperature class to read the JSON file and 
 instantiate the boundaries of the temperature such as cold_max, 
 comfortable_min and so forth. We also created a function called 
-compareTemp that compares the current temperature from the sensor obtained through the sense.get_temperature() method with the
+compareTemp that compares the current temperature from the sensor
+obtained through the sense.get_temperature() method with the
 temperature boundaries and display the color according to the 
 current temperature.
 
