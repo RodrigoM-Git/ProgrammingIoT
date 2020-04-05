@@ -50,4 +50,4 @@ while Player1.getPoints() < 30 or Player2.getPoints() < 30:
         
 with open('winner.csv', mode='a') as winners_file:
     file_writer = csv.writer(winners_file, delimiter=':')
-    file_writer.writerow([winner.getID(), "Points-" + str(winner.getPoints()), "Time-"str(finalTime) + "s"])
+    file_writer.writerow([winner.getID(), "Points-" + str(winner.getPoints()), "Time-" + str(finalTime) + "s"])
