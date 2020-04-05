@@ -1,0 +1,15 @@
+Task a
+We created an emoji class that has three functions which are displaying the faces such asa happy face, sad face and wink face emoji. We passed the color parameter to determine the color of the emoji. We used a while loop in the main to keep iterating through the emojis that we instantiated in the main and used the sleep(3) method to display each emoji for 3 seconds while in the loop.
+
+Task b
+We created a temperature class to read the JSON file and instantiate the boundaries of the temperature such as cold_max, comfortable_min and so forth. We also created a function called compareTemp that compares the current temperature from the sensor obtained through the sense.get_temperature()method with the temperature boundaries and display the color according to the current temperature.
+
+Task c
+We created an electronicDie.py file that consist of the ElectronicDie class that contains a role method. The role method has validations checks to detect shake movements using the accelerometer sensor from the IMU. In the documentation having more than 1G of movement is classified as a shake, but since it is to sensitive through testing we decided to increment the validation to 3G to reduce the sensitivity of the sensor to imitate the shake movement of a normal die when shaking the pi.
+
+Furthermore, we created a Player class to store the name of the player and keeping track of the points of the player.
+
+Lastly, we have the game.py to initiate the start of the game. First we instantiate our objects such as players and die. Then we used a while loop that validates that either players have less than 30 points in order for the game to proceed. Increment the points according to the roll of die. If a player were to reach 30 points, scroll message of the player who wins, record the time using startTime - endTime where they are sart and end running time and then write them to the CSV file, starting from the player ID, the end points they have and the total time for them to reach the point.
+
+URL of Repository for Version Control:
+https://github.com/RodrigoM-Git/ProgrammingIoT.git
