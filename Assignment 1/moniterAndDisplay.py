@@ -1,6 +1,7 @@
 from sense_hat import SenseHat
 import json
-from time import sleep
+import time
+import os
 
 sense = SenseHat()
 
@@ -21,19 +22,46 @@ class temperature:
         blue = (0, 0, 250) #blue
         green = (0, 250, 0) #green
         red = (250, 0, 0) #red
+        white = (250, 250, 250) #white
         
         if self.temp <= self.cold_max:
-            sense.clear(blue)
+            sense.show_message("Temp=%.1fC" % self.temp, text_colour=white, back_colour=blue)
         elif self.temp > self.comfortable_min and self.temp < self.comfortable_max:
-            sense.clear(green)
+            sense.show_message("Temp=%.1fC" % self.temp, text_colour=white, back_colour=green)
         elif self.temp >= self.hot_min:
-            sense.clear(red)
+            sense.show_message("Temp=%.1fC" % self.temp, text_colour=white, back_colour=red)
+        
+        
+def get_cpu_temp():
+    res = os.popen("vcgencmd measure_temp").readline()
+    return float(res.replace("temp=","").replace("'C\n",""))
+
+
+def get_smooth(x):
+    if not hasattr(get_smooth, "t"):
+        get_smooth.t = [x,x,x]
+    
+    get_smooth.t[2] = get_smooth.t[1]
+    get_smooth.t[1] = get_smooth.t[0]
+    get_smooth.t[0] = x
+    
+    return (get_smooth.t[0] + get_smooth.t[1] + get_smooth.t[2]) / 3
 
 
 while True:
-    tempNow = temperature(sense.get_temperature())
-    tempNow.compareTemp()
-    sleep(10)
+    temp1 = sense.get_temperature_from_humidity()
+    temp2 = sense.get_temperature_from_pressure()
+    tempCPU = get_cpu_temp()
+    
+    temp = (temp1 + temp2) / 2
+    realTemp = temp - ((tempCPU - temp) / 1.5)
+    realTemp = get_smooth(realTemp)
+    
+    tempToCompare = temperature(realTemp)
+    tempToCompare.compareTemp()
+    
+    time.sleep(10)
+    
     sense.clear()
-    sleep(1)
+
     
