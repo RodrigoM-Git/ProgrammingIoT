@@ -1,5 +1,5 @@
-from Player import Player
-from ElectronicDie import ElectronicDie
+from player import Player
+from electronicDie import ElectronicDie
 from sense_hat import SenseHat
 import time
 import csv
