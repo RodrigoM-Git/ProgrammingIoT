@@ -9,7 +9,7 @@ class temperature:
     def __init__(self, temp):
         self.temp = temp
         
-        with open('/home/pi/Desktop/SenseHat Code/GitHub Repository/ProgrammingIoT/Assignment 1/config.json') as f:
+        with open('/home/pi/Desktop/SenseHat Code/GitHub Repository/ProgrammingIoT/Assignment_1/config.json') as f:
             data = json.load(f)
             
         self.cold_max = data['cold_max']
