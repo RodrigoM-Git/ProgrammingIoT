@@ -54,13 +54,13 @@ class emoji():
             c, c, c, c, c, c, c, c
         ] 
         return face
-     
-    
+
+
+happy = emoji()
+sad = emoji()
+wink = emoji()
+
 while True:
-    happy = emoji()
-    sad = emoji()
-    wink = emoji()
-    
     sense.set_pixels(happy.getHappy(y))
     sleep(3)
     sense.set_pixels(sad.getSad(r))
